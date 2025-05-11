@@ -4,15 +4,19 @@ import {
   createStaticNavigation,
   StaticParamList,
 } from '@react-navigation/native';
+import {LoginScreen} from '../screens/Login';
+import {CartScreen} from '../screens/Cart';
+import {FavouritesScreen} from '../screens/Favourites';
+import {OrdersScreen} from '../screens/Orders';
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Home',
   screens: {
-    Login: HomeScreen,
+    Login: LoginScreen,
     Home: HomeScreen,
-    Cart: HomeScreen,
-    Favourites: HomeScreen,
-    Orders: HomeScreen,
+    Cart: CartScreen,
+    Favourites: FavouritesScreen,
+    Orders: OrdersScreen,
   },
 });
 
