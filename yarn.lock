@@ -2404,6 +2404,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/elements@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "@react-navigation/elements@npm:2.4.2"
+  dependencies:
+    color: ^4.2.3
+  peerDependencies:
+    "@react-native-masked-view/masked-view": ">= 0.2.0"
+    "@react-navigation/native": ^7.1.9
+    react: ">= 18.2.0"
+    react-native: "*"
+    react-native-safe-area-context: ">= 4.0.0"
+  peerDependenciesMeta:
+    "@react-native-masked-view/masked-view":
+      optional: true
+  checksum: 5fee0e6601d50512256028c5de9da924ab17e5edbdfbf84963c1e95b0a3da05eb09aa753111453f3a9701b7d123dbb14c2ce2bff888ec9488fcc893872e2e079
+  languageName: node
+  linkType: hard
+
 "@react-navigation/native-stack@npm:^7.3.12":
   version: 7.3.12
   resolution: "@react-navigation/native-stack@npm:7.3.12"
@@ -2442,6 +2460,23 @@ __metadata:
   dependencies:
     nanoid: ^3.3.11
   checksum: cc3fb52957220adb8486c5546c78e4a9a92863f44368e5aeec74e6d3a31a9930d24e0cf022d91a7074a8e7d779690e11994f8f1254aaf0035d0d55b1656d8a3f
+  languageName: node
+  linkType: hard
+
+"@react-navigation/stack@npm:^7.3.2":
+  version: 7.3.2
+  resolution: "@react-navigation/stack@npm:7.3.2"
+  dependencies:
+    "@react-navigation/elements": ^2.4.2
+    color: ^4.2.3
+  peerDependencies:
+    "@react-navigation/native": ^7.1.9
+    react: ">= 18.2.0"
+    react-native: "*"
+    react-native-gesture-handler: ">= 2.0.0"
+    react-native-safe-area-context: ">= 4.0.0"
+    react-native-screens: ">= 4.0.0"
+  checksum: 418c86f5b24915a834e9fbf9bb3603967058ae70d3cfcc9f8be17770e0a56fe78518e3ff421f224014608f2d272c04fe45b7b4532c998cb6fac0f1c9bb1c08c9
   languageName: node
   linkType: hard
 
@@ -2889,6 +2924,7 @@ __metadata:
     "@react-navigation/elements": ^2.4.1
     "@react-navigation/native": ^7.1.8
     "@react-navigation/native-stack": ^7.3.12
+    "@react-navigation/stack": ^7.3.2
     "@types/jest": ^29.5.13
     "@types/react": ^19.0.0
     "@types/react-native-vector-icons": ^6.4.18

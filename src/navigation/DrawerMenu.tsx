@@ -1,49 +1,59 @@
-import React, {Fragment, useState} from 'react';
-import {useDrawer} from '../stores/drawer.store';
+import React, {FC, Fragment} from 'react';
 import {styles} from './styled';
 import {Text, View} from 'react-native';
 import {DrawerItem} from './DrawerItem';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from './RootNavigator';
+import {SharedValue} from 'react-native-reanimated';
 
-export const DrawerMenu = ({children}: {children: React.ReactNode}) => {
-  const [activeItem, setActiveItem] = useState('Home');
-
-  const isDrawerOpen = useDrawer(state => state.open);
-  const toggleDrawer = useDrawer(state => state.toggle);
+export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const route = useRoute();
 
   return (
     <Fragment>
-      <View
-        style={[
-          {
-            display: isDrawerOpen ? 'flex' : 'none',
-          },
-          styles.drawerContainer,
-        ]}>
+      <View style={styles.drawerContainer}>
         <View style={styles.contentWrapper}>
           <Text style={styles.drawerTitle}>Beka</Text>
 
           <DrawerItem
             label="Start"
-            isActive={activeItem === 'Home'}
-            onPress={() => setActiveItem('Home')}
+            isActive={route?.name === 'Home'}
+            onPress={() => {
+              navigation.navigate('Home');
+              active.value = false;
+            }}
           />
 
           <DrawerItem
             label="Your Cart"
-            isActive={activeItem === 'Cart'}
-            onPress={() => setActiveItem('Cart')}
+            isActive={route?.name === 'Cart'}
+            onPress={() => {
+              navigation.navigate('Cart', {
+                userId: '123',
+                productId: '456',
+              });
+              active.value = false;
+            }}
           />
 
           <DrawerItem
             label="Favourites"
-            isActive={activeItem === 'Favourites'}
-            onPress={() => setActiveItem('Favourites')}
+            isActive={route?.name === 'Favourites'}
+            onPress={() => {
+              navigation.navigate('Favourites');
+              active.value = false;
+            }}
           />
 
           <DrawerItem
             label="Your Orders"
-            isActive={activeItem === 'Orders'}
-            onPress={() => setActiveItem('Orders')}
+            isActive={route?.name === 'Orders'}
+            onPress={() => {
+              navigation.navigate('Orders', {orderId: 'ORD-789'});
+              active.value = false;
+            }}
           />
 
           <View style={styles.divider} />
@@ -51,13 +61,12 @@ export const DrawerMenu = ({children}: {children: React.ReactNode}) => {
           <DrawerItem
             label="Sign Out"
             isActive={false}
-            onPress={toggleDrawer}
+            onPress={() => {
+              navigation.navigate('Login');
+              active.value = false;
+            }}
           />
         </View>
-      </View>
-
-      <View style={{display: isDrawerOpen ? 'none' : 'flex', flex: 1}}>
-        {children}
       </View>
     </Fragment>
   );

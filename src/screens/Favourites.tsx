@@ -1,29 +1,30 @@
 import {useNavigation} from '@react-navigation/native';
-import {Fragment} from 'react';
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
 export function FavouritesScreen() {
   const navigation = useNavigation();
   return (
-    <Fragment>
-      <Text>Favourites</Text>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'lightblue',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+    <>
+      <View style={styles.container}>
+        <Text style={{fontSize: 24}}>Favourites</Text>
+
         <Button title="Cart Page" onPress={() => navigation.navigate('Cart')} />
-        <Button
-          title="Favourites Page"
-          onPress={() => navigation.navigate('Favourites')}
-        />
+        <Button title="Home Page" onPress={() => navigation.navigate('Home')} />
         <Button
           title="Orders Page"
           onPress={() => navigation.navigate('Orders')}
         />
       </View>
-    </Fragment>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+  },
+});

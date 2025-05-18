@@ -24,8 +24,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   drawerContainer: {
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: '#12122d',
+    zIndex: -1,
   },
   contentWrapper: {
     width: '60%',

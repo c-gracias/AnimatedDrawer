@@ -1,4 +1,4 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {routes} from './Routes';
 
 export type RootStackParamList = {
@@ -6,12 +6,16 @@ export type RootStackParamList = {
 };
 
 export const RootNavigator = () => {
-  const Stack = createNativeStackNavigator<RootStackParamList>();
+  const Stack = createStackNavigator<RootStackParamList>();
 
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{
+        ...TransitionPresets.SlideFromRightIOS,
+        detachPreviousScreen: false,
+        headerShown: false,
+      }}>
       {Object.entries(routes).map(([key, value]) => (
         <Stack.Screen
           key={key}

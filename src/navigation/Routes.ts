@@ -4,6 +4,7 @@ import {FavouritesScreen} from '../screens/Favourites';
 import {HomeScreen} from '../screens/Homescreen';
 import {LoginScreen} from '../screens/Login';
 import {OrdersScreen} from '../screens/Orders';
+import {withDrawer} from './withDrawer';
 
 interface RouteOptions {
   title?: string;
@@ -24,13 +25,13 @@ export const routeDefinitions = {
     screen: LoginScreen,
   },
   Home: {
-    screen: HomeScreen,
+    screen: withDrawer(HomeScreen),
     options: {
       title: 'Home',
     },
   },
   Cart: {
-    screen: CartScreen,
+    screen: withDrawer(CartScreen),
     params: {
       userId: '123',
       productId: '456',
@@ -40,13 +41,13 @@ export const routeDefinitions = {
     },
   },
   Favourites: {
-    screen: FavouritesScreen,
+    screen: withDrawer(FavouritesScreen),
     options: {
       title: 'Favourites',
     },
   },
   Orders: {
-    screen: OrdersScreen,
+    screen: withDrawer(OrdersScreen),
     params: {
       orderId: 'ORD-789',
     },
