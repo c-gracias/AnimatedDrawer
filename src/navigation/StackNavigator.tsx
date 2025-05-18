@@ -9,40 +9,33 @@ import {CartScreen} from '../screens/Cart';
 import {FavouritesScreen} from '../screens/Favourites';
 import {OrdersScreen} from '../screens/Orders';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import {useDrawer} from '../stores/drawer.store';
+import {NativeStackHeaderProps} from '@react-navigation/native-stack';
+import {styles} from './styled';
 
-const HeaderLeft = () => {
+const HeaderLeft = (props: NativeStackHeaderProps) => {
   const toggleDrawer = useDrawer(state => state.toggle);
 
   return (
-    <TouchableOpacity onPress={() => toggleDrawer()} style={styles.menuButton}>
-      <Icon name="menu" size={24} color="#000" />
-    </TouchableOpacity>
+    <View style={styles.headerWrapper}>
+      <TouchableOpacity onPress={toggleDrawer} style={styles.menuButton}>
+        <Icon name="menu" size={24} color="#000" />
+      </TouchableOpacity>
+
+      <Text style={{fontSize: 18}}>{props.options?.title}</Text>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  menuButton: {
-    marginLeft: 15,
-  },
-});
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Home',
   screenOptions: {
-    headerLeft: () => <HeaderLeft />,
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    headerTitleAlign: 'left',
+    header: HeaderLeft,
   },
   screens: {
     Login: {
       screen: LoginScreen,
-      options: {
-        headerShown: false,
-      },
     },
     Home: {
       screen: HomeScreen,

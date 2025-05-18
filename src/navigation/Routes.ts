@@ -1,0 +1,69 @@
+import {ComponentType} from 'react';
+import {CartScreen} from '../screens/Cart';
+import {FavouritesScreen} from '../screens/Favourites';
+import {HomeScreen} from '../screens/Homescreen';
+import {LoginScreen} from '../screens/Login';
+import {OrdersScreen} from '../screens/Orders';
+
+interface RouteOptions {
+  title?: string;
+}
+
+interface RouteParams {
+  [key: string]: string | number | boolean | undefined;
+}
+
+interface RouteConfig<T extends RouteParams = {}> {
+  screen: ComponentType<any>;
+  options?: RouteOptions;
+  params?: T;
+}
+
+export const routeDefinitions = {
+  Login: {
+    screen: LoginScreen,
+  },
+  Home: {
+    screen: HomeScreen,
+    options: {
+      title: 'Home',
+    },
+  },
+  Cart: {
+    screen: CartScreen,
+    params: {
+      userId: '123',
+      productId: '456',
+    },
+    options: {
+      title: 'Shopping Cart',
+    },
+  },
+  Favourites: {
+    screen: FavouritesScreen,
+    options: {
+      title: 'Favourites',
+    },
+  },
+  Orders: {
+    screen: OrdersScreen,
+    params: {
+      orderId: 'ORD-789',
+    },
+    options: {
+      title: 'My Orders',
+    },
+  },
+} as const;
+
+export type Routes = keyof typeof routeDefinitions;
+
+// Derive a type that maps each Route name to its expected Params type (or {})
+export type RouteParamsMap = {
+  [K in Routes]: (typeof routeDefinitions)[K] extends {params: infer P}
+    ? P
+    : {};
+};
+
+export const routes: {[K in Routes]: RouteConfig<RouteParamsMap[K]>} =
+  routeDefinitions;

@@ -1,6 +1,28 @@
 import {StyleSheet} from 'react-native';
+import {Platform} from 'react-native';
 
 export const styles = StyleSheet.create({
+  menuButton: {
+    marginLeft: 15,
+  },
+  headerWrapper: {
+    flexDirection: 'row',
+    gap: 14,
+    paddingHorizontal: 8,
+    paddingVertical: 12,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+    backgroundColor: '#fff',
+  },
   drawerContainer: {
     flex: 1,
     backgroundColor: '#12122d',
