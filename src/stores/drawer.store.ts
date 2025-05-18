@@ -5,7 +5,7 @@ export const useDrawer = create<{
   setOpen: (shouldOpen: boolean) => void;
   toggle: () => void;
 }>(set => ({
-  open: false,
+  open: true,
   setOpen: (shouldOpen: boolean) => set({open: shouldOpen}),
   toggle: () => set(state => ({open: !state.open})),
 }));

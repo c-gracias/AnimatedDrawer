@@ -1,11 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import {Fragment} from 'react';
-import {Button, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 
 export function OrdersScreen() {
   const navigation = useNavigation();
   return (
     <Fragment>
+      <Text>Orders</Text>
       <View
         style={{
           flex: 1,

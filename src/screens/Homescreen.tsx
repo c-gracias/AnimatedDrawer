@@ -1,11 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import {Fragment} from 'react';
-import {Button, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 
 export function HomeScreen() {
   const navigation = useNavigation();
   return (
     <Fragment>
+      <Text>Home</Text>
       <View
         style={{
           flex: 1,

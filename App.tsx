@@ -1,16 +1,19 @@
 import React from 'react';
 import {Navigation} from './src/navigation/StackNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import DrawerNavigator from './src/navigation/DrawerNavigator';
+import {DrawerMenu} from './src/navigation/DrawerMenu';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App(): React.JSX.Element {
   return (
     <>
-      <SafeAreaProvider>
-        <DrawerNavigator>
-          <Navigation />
-        </DrawerNavigator>
-      </SafeAreaProvider>
+      <GestureHandlerRootView>
+        <SafeAreaProvider>
+          <DrawerMenu>
+            <Navigation />
+          </DrawerMenu>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
     </>
   );
 }

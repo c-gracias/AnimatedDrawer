@@ -1,11 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import {Fragment} from 'react';
-import {Button, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 
 export function LoginScreen() {
   const navigation = useNavigation();
   return (
     <Fragment>
+      <Text>Login</Text>
       <View
         style={{
           flex: 1,
