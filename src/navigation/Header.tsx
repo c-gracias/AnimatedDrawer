@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {SharedValue} from 'react-native-reanimated';
 import {useRoute} from '@react-navigation/native';
@@ -30,17 +30,16 @@ const styles = StyleSheet.create({
     gap: 14,
     paddingHorizontal: 8,
     paddingVertical: 12,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
-    backgroundColor: '#fff',
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: '#000',
+    //     shadowOffset: {width: 0, height: 2},
+    //     shadowOpacity: 0.25,
+    //     shadowRadius: 3.84,
+    //   },
+    //   android: {
+    //     elevation: 5,
+    //   },
+    // }),
   },
 });

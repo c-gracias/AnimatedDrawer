@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     zIndex: -1,
   },
   contentWrapper: {
-    width: '60%',
+    width: '54%',
     flex: 1,
     rowGap: 20,
     alignItems: 'center',

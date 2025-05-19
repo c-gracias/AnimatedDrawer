@@ -10,27 +10,29 @@ import Animated, {
 import {DrawerMenu} from './DrawerMenu';
 import {Overlay} from './Overlay';
 import {Header} from './Header';
+import {Dimensions} from 'react-native';
 
 export const withDrawer = (Component: React.FC) => () => {
-  const active = useSharedValue(false);
+  const active = useSharedValue(true);
   const progress = useDerivedValue(() => withTiming(active.value ? 1 : 0));
+  const width = Dimensions.get?.('window').width;
 
   const animatedStyle = useAnimatedStyle(() => {
-    const rotateY = interpolate(
+    const rotateZ = interpolate(
       progress.value,
       [0, 1],
-      [0, -15],
+      [0, -4],
       Extrapolation.CLAMP,
     );
+
     return {
       transform: [
-        {perspective: 1000},
-        {scale: active.value ? withTiming(0.8) : withTiming(1)},
+        {translateY: active.value ? withTiming(width * 0.2) : withTiming(0)},
         {
-          translateX: active.value ? withTiming(240) : withTiming(0),
+          translateX: active.value ? withTiming(width * 0.6) : withTiming(0),
         },
         {
-          rotateY: `${rotateY}deg`,
+          rotateZ: `${rotateZ}deg`,
         },
       ],
       borderRadius: active.value ? withTiming(20) : withTiming(0),
@@ -41,12 +43,15 @@ export const withDrawer = (Component: React.FC) => () => {
     <>
       <DrawerMenu active={active} />
 
-      <Animated.View style={[{flex: 1}, animatedStyle]}>
+      <Animated.View
+        style={[
+          {flex: 1, position: 'relative', backgroundColor: '#fff'},
+          animatedStyle,
+        ]}>
         <Header active={active} />
         <Component />
+        <Overlay active={active} />
       </Animated.View>
-
-      <Overlay active={active} />
     </>
   );
 };

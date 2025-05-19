@@ -17,8 +17,19 @@ interface RouteParams {
 interface RouteConfig<T extends RouteParams = {}> {
   screen: ComponentType<any>;
   options?: RouteOptions;
-  params?: T;
+  params?: {
+    [K in keyof T]?: T[K];
+  };
 }
+
+export type Routes = keyof typeof routeDefinitions;
+
+// Derive a type that maps each Route name to its expected Params type (or {})
+export type RouteParamsMap = {
+  [K in Routes]: (typeof routeDefinitions)[K] extends {params?: infer P}
+    ? P
+    : {};
+};
 
 export const routeDefinitions = {
   Login: {
@@ -55,15 +66,6 @@ export const routeDefinitions = {
       title: 'My Orders',
     },
   },
-} as const;
-
-export type Routes = keyof typeof routeDefinitions;
-
-// Derive a type that maps each Route name to its expected Params type (or {})
-export type RouteParamsMap = {
-  [K in Routes]: (typeof routeDefinitions)[K] extends {params: infer P}
-    ? P
-    : {};
 };
 
 export const routes: {[K in Routes]: RouteConfig<RouteParamsMap[K]>} =

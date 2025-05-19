@@ -2,13 +2,12 @@ import React, {FC, Fragment} from 'react';
 import {styles} from './styled';
 import {Text, View} from 'react-native';
 import {DrawerItem} from './DrawerItem';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from './RootNavigator';
+import {useRoute} from '@react-navigation/native';
 import {SharedValue} from 'react-native-reanimated';
+import {useTypedNavigation} from '../hooks/useTypedNavigation';
 
 export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const navigation = useTypedNavigation();
   const route = useRoute();
 
   return (
@@ -21,8 +20,8 @@ export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
             label="Start"
             isActive={route?.name === 'Home'}
             onPress={() => {
-              navigation.navigate('Home');
               active.value = false;
+              navigation.navigate('Home');
             }}
           />
 
@@ -30,11 +29,11 @@ export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
             label="Your Cart"
             isActive={route?.name === 'Cart'}
             onPress={() => {
+              active.value = false;
               navigation.navigate('Cart', {
                 userId: '123',
                 productId: '456',
               });
-              active.value = false;
             }}
           />
 
@@ -42,8 +41,8 @@ export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
             label="Favourites"
             isActive={route?.name === 'Favourites'}
             onPress={() => {
-              navigation.navigate('Favourites');
               active.value = false;
+              navigation.navigate('Favourites');
             }}
           />
 
@@ -51,8 +50,8 @@ export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
             label="Your Orders"
             isActive={route?.name === 'Orders'}
             onPress={() => {
-              navigation.navigate('Orders', {orderId: 'ORD-789'});
               active.value = false;
+              navigation.navigate('Orders', {orderId: 'ORD-789'});
             }}
           />
 
@@ -62,8 +61,8 @@ export const DrawerMenu: FC<{active: SharedValue<boolean>}> = ({active}) => {
             label="Sign Out"
             isActive={false}
             onPress={() => {
-              navigation.navigate('Login');
               active.value = false;
+              navigation.navigate('Login');
             }}
           />
         </View>
