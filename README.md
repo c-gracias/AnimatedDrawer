@@ -1,8 +1,8 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Playback of AnimatedDrawer implementation
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+> ![Awesome Animation](https://d2tcgf3zx24xll.cloudfront.net/s86ar2%2Fpreview%2F67313310%2Fmain_large.gif?response-content-disposition=inline%3Bfilename%3D%22main_large.gif%22%3B&response-content-type=image%2Fgif&Expires=1747677959&Signature=cxu5ZYnTsz2r6aDYKXQDmxDfgTVP9A1Zf9KoO0RS-L7WNf6SUiQjPCYwdQ-GzkTLL1XdrY8u88b4UjnCTF~Hk95DjrnS~kC3uXLZspdHr7FeIWayvfEMVc1xyekAzjiKj~rp2QrXONjNR-fP2-ScAVTwIdJ3T3mLMinuWObfBhxpcYwHDScJpx64oCt5TdHIHbBJzV9jn96CfxO1mx1AYMAv~PtahdUUi~n351b~g1NEP0UdsbIzKEVXxqZ5tGXWMxsIw2JBxXLaksyaG~zzPI7qanYS1R~0~YV3zQhSLaAK7n4St08KtdIXfhspmB8VGLO-A7NfO2e~VYBBv22amw__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ)
 
 ## Step 1: Start Metro
 
